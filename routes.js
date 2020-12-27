@@ -1,6 +1,6 @@
 "use strict";
 const readQuizDetails = require('./controllers/fetchQuestion');
-const createQuizDetails = require('./controllers/uploadQuestion');
+const createQuizDetails = require('./controllers/uploadQuizQuestion');
 
 exports.init = (router) => {
   router.route('/').get((req, res) => {
@@ -8,5 +8,6 @@ exports.init = (router) => {
   });
 
   router.route('/get-quiz-data').get(readQuizDetails.readQuizData);
-  router.route('/add-quiz-data').post(createQuizDetails.createQuizData);
+  //router.route('/add-quiz-data').post(createQuizDetails.createQuizData);
+  router.route('/add-quiz-data').post(createQuizDetails.quizDataCreation);
 };

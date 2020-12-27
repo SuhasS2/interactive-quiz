@@ -12,12 +12,13 @@ const quizDetails = Joi.object({
     'questionNumber': Joi.number().integer().min(1).max(50).required(),
     'question': questionDetails,
     'options': Joi.array().items(Joi.string()).required(),
+    'optionListIn' : Joi.string().min(2).max(50).trim(),
     'answer': Joi.string().min(1).max(500).trim().required(),
     'keyAnswer': Joi.string().min(1).max(10).trim().required(),
-    'correctAnswerResponseWord': Joi.string().min(2).max(100).trim().required(),
-    'correctAnswerResponse': Joi.string().min(2).max(500).trim().required(),
-    'wrongAnswerResponseWord': Joi.string().min(2).max(100).trim().required(),
-    'wrongAnswerResponse': Joi.string().min(2).max(500).trim().required(),
+    'correctAnswerResponseWord': Joi.string().min(2).max(1000).trim().required(),
+    'correctAnswerResponse': Joi.string().min(2).max(5000).trim().required(),
+    'wrongAnswerResponseWord': Joi.string().min(2).max(1000).trim().required(),
+    'wrongAnswerResponse': Joi.string().min(2).max(5000).trim().required(),
 });
 
 function payloadValidationOfQuizData(data) {
