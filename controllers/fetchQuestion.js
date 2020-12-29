@@ -1,17 +1,14 @@
 'use strict';
 
-const quizQuestionAnswer = require('../models/interactiveQuizData');
+const quizQuestionAnswer = require('../model/interactiveQuizData');
 
 async function readQuizData(req, res) {
     try {
-        const dbCollectionSize = await quizQuestionAnswer.collection.countDocuments({});
-        console.log(dbCollectionSize);
-        const skipVal = 4 //(dbCollectionSize)/3;
-        console.log(skipVal);
-        const getQuizData = await quizQuestionAnswer.find({'question.questionType' : {$in : ['MCQ','T/F']}}).limit(3).skip(skipVal).sort(-1);
-        //const getQuizData = await quizQuestionAnswer.aggregate([{$match : {'question.questionType' : {$in : ['MCQ','T/F']}}}, {$skip : 2}])
+        var getQuizData = {};
+        const getMcqQuestion = await quizQuestionAnswer.find({'question.questionType' : {$in : ['MCQ']}}).limit(5).skip(1);
+        const getTfQuestion = await quizQuestionAnswer.find({'question.questionType' : {$in : ['T/F']}}).limit(5).skip(1);
+        getQuizData = {getMcqQuestion,getTfQuestion};
         res.status(200).send(getQuizData);
-        console.log("Reading Data", getQuizData);
     } catch (err) {
         console.log(err);
     }

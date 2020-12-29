@@ -51,3 +51,25 @@
 {"topic":"Something went wrong","message":"TypeError: Cannot read property 'questionNumber' of undefined","level":"error"}
 {"topic":"Something went wrong","message":"TypeError: Cannot read property 'push' of undefined","level":"error"}
 {"topic":"Something went wrong","message":"ReferenceError: csvFilePath is not defined","level":"error"}
+{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}

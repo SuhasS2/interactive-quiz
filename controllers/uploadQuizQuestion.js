@@ -1,84 +1,58 @@
-'use strict';
+'use strict'
 
-const formidable = require('formidable');
-const logger = require('../config/logger');
-const path = require('path');
-const csvtojsonV2 = require('csvtojson');
-const payloadValidation = require('../utils/payloadValidationOfQuizData');
-const quizModel = require('../models/interactiveQuizData');
-const s3Model = require('../models/fileUploadMeta');
+const logger = require('../config/winston-config');
+const csvtojson = require('csvtojson');
+const s3Util = require('../util/s3Modules');
+const quizData = require('../model/interactiveQuizData');
+const dataValidation = require('../util/payloadValidationOfQuizData');
+
 
 async function quizDataCreation(req, res) {
-    const form = new formidable.IncomingForm();
-    form.parse(req, async (err, fields, files) => { // to get form data 
-        const ext = path.extname(files.file.name);
-        console.log(ext);
-        console.log(files.file.type);
-        if (ext !== '.csv') {
-            console.log("I am in this function")
-            res.status(400).send({ success: false, message: 'Accepts only .csv file' });
-        } else if (files.file.size === 0) {
-            res.status(400).send({ success: false, message: 'input file size is 0 please add the quiz data and try again.' });
-        } else {
-            // csv to json conversion
-                const dT = new Date().toString().split(' ');
-                const day = `${dT[1]}-${dT[2]}-${dT[3]}`;
-                const csvFilePath = `${process.env.S3_BUCKET}/${process.env.NODE_ENV}/${process.env.S3_PRIMARY}/${day}/${files.file.name}`;
+    const formfields = await s3Util.fileParsing(req);
+    const getFileTypeStatus = await s3Util.checkFileType(formfields.files);
+    const objPurpose = process.env.S3_PURPOSE;
 
-                const converter = csvtojsonV2();
-                const jsonObj = await converter.fromFile(files.file.path);
-                console.log(jsonObj.length);
-                // var approvedQuestions = 0;
-                // var rejectedQuestions = 0;
-
-                jsonObj.forEach(async function (dataValues) {
-                    try {
-                        const payloadValidations = await payloadValidation.payloadValidationOfQuizData(dataValues);
-                        //console.log(payloadValidations);
-
-                        if (payloadValidations.success) {
-                            //statusArr.push(payloadValidations.value);
-                            //await quizModel.collection.insertOne(payloadValidations.value);
-                        }
-                        else {
-                            res.status(404).send({ message: `${payloadValidations.message}` });
-                        }
-                    } catch (err) {
-                        logger.error({ topic: 'Something went wrong', message: `${err}` });
-                        res.status(500).send({ message: `${err}` });
-                    }
-                }); res.status(200).send({ message: "Quiz Details Uploaded Successfully" });
-                await s3Params(csvFilePath,files.file.type,files.file.size,files.file.name,jsonObj.length,res);
-                //await quizModel.collection.insertMany(statusArr); 
-            }
-    });
-};
-
-async function s3Params(pathField,typeFile,fileSize,fileName,objectLength,res) {
-    const s3MetaData = {}
-    s3MetaData.name = pathField;
-    s3MetaData.type = typeFile;
-    s3MetaData.url = "ABCD";
-    s3MetaData.lastModified = new Date();
-    s3MetaData.sizeInBytes = fileSize;
-    s3MetaData.bucket = process.env.S3_BUCKET;
-    s3MetaData.purpose = "Quiz Data Uploading";
-    s3MetaData.keyName = fileName;
-    s3MetaData.user = "XYZ";
-    s3MetaData.status = "Records updated successfully to the database";
-    s3MetaData.recordCount =objectLength;
-    s3MetaData.action = "Upload";
-    try{
-    const s3Validation = await payloadValidation.payloadValidationOfS3Data(s3MetaData);
-    if (s3Validation.success) {
-        await s3Model.collection.insertOne(s3Validation.value);
-        res.status(200).send({ message: 'S3 Details are inserted successfully' });
+    if (!getFileTypeStatus) {
+        logger.error({ message: 'File type not supported' });
+        res.status(400).send({ message: 'File type not supported' });
+    } else if (formfields.files.file.size === 0) {
+        res.status(400).send({ message: 'csv file size is 0 please add some data and try after some time' });
+    } else if (formfields.files.file.size > process.env.QUIZ_FILE_SIZE) {
+        res.status(400).send({ message: `csv file size is too large please reduce the size to ${process.env.QUIZ_FILE_SIZE} bytes` });
     } else {
-        res.status(400).send({ message: 'Something went wrong' });
-    }}catch (err) {
-        logger.error({ topic: 'Something went wrong', message: `${err}` });
-        res.status(500).send({ message: `${err}` });
-}}
+        const readFileData = await s3Util.s3ReadFile(formfields.files.file.path);
+        if (!readFileData) {
+            res.status(400).send({ message: 'Unable to read the data from the file uploaded' });
+        } else {
+            const dT = new Date().toString().split(' ');
+            const day = `${dT[1]}-${dT[2]}-${dT[3]}`;
+            const csvFilePath = `${process.env.S3_BUCKET}/${process.env.NODE_ENV}/${process.env.S3_PRIMARY}/${day}`;
+            const csvFileDetails = await s3Util.createFileObject(formfields.files.file.type, objPurpose, formfields.files.file.name, formfields.fields.user, process.env.S3_BUCKET, csvFilePath);
+            const validateMetadata = await s3Util.s3UploadFile(readFileData, csvFileDetails);
+            if (validateMetadata.Count === 1) {
+                try {
+                    const jsonObj = await csvtojson().fromFile(formfields.files.file.path);
+                    jsonObj.forEach(async function (dataValues) {
+                        try {
+                            const payloadValidation = await dataValidation.payloadValidationOfQuizData(dataValues);
+                            if (payloadValidation.success) {
+                                await quizData.collection.insertOne(payloadValidation.value);
+                            } else {
+                                res.status(404).send({ message: `${payloadValidation.message}` });
+                            }
+                        } catch (err) {
+                            logger.error({ topic: 'Something went wrong', message: `${err}` });
+                            res.status(500).send({ message: `${err}` });
+                        }
+                    });
+                } catch (err) {
+                    logger.error({ message: 'S3 upload failed' });
+                    res.status(500).send({ message: 'S3 Upload failed' });
+                }
+            }
+            res.status(200).send({ message: 'Quiz Data and S3 File Data Uploaded Successfully' });
+        }
+    }
+}
 
 module.exports = { quizDataCreation }
-

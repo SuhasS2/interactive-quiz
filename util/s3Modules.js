@@ -6,8 +6,8 @@ const path = require('path');
 const formidable = require('formidable');
 const s3 = require('../config/s3-config');
 const logger = require('../config/winston-config');
-const upload = require('../models/fileUploadMeta');
-const schema = require('../utils/payloadValidationOfQuizData');
+const upload = require('../model/fileUploadMeta');
+const schema = require('./schemaValidation');
 
 const form = new formidable.IncomingForm();
 const csv = 'csv';
@@ -20,7 +20,7 @@ const csv = 'csv';
 async function checkFileType(file) {
   logger.info({'File Type': file.file.type, 'Function': 'checkFileType'});
   const ext = path.extname(file.file.name);
-  if (file.file.type === 'text/csv' || file.file.type === 'application/vnd.ms-excel' || ext === `.${csv}`) {
+  if (file.file.type === 'text/csv' || ext === `.${csv}`) {
     return true;
   } else {
     return false;
@@ -59,11 +59,12 @@ async function fileParsing(fileBody) {
  * @param {String} bucketPath
  * @return {Object} Returns the object created for the received file.
  */
-async function createFileObject(type, keyName, user, bucket, bucketPath) {
+async function createFileObject(type, purpose, keyName, user, bucket, bucketPath) {
   const fileDetailObj = {
     type: type,
+    purpose: purpose,
     keyName: keyName,
-    user : user,
+    user: user,
     bucket: bucket,
     bucketPath: bucketPath,
   };
@@ -108,11 +109,8 @@ async function generateCsvParam(fileData, fileObject) {
  * @param {Object} fileObject
  */
 async function s3UploadFile(fileData, fileObject) {
-  
   const generatedParam = await generateCsvParam(fileData, fileObject);
-  console.log(generatedParam);
   const getUploadResult = await s3.upload(generatedParam).promise();
-  console.log(getUploadResult);
   try {
     if (getUploadResult.Location || getUploadResult.Key) {
       fileObject['url'] = getUploadResult.Location;
@@ -142,15 +140,13 @@ async function getFileUploadDetails(fileObject) {
     Bucket: process.env.S3_BUCKET,
     Prefix: fileObject.name,
   };
-console.log(listParams);
+
   try {
     const getObjectVersions = await s3.listObjectVersions(listParams).promise();
-    console.log(getObjectVersions);
     if (getObjectVersions.Versions) {
       fileObject['lastModified'] = getObjectVersions.Versions[0].LastModified;
       fileObject['sizeInBytes'] = getObjectVersions.Versions[0].Size;
       fileObject['status'] = 'Initiated';
-      console.log(fileObject);
       return await metadata(fileObject);
     } else {
       logger.error({message: 'Unable to get details of the last uploaded file.'});
@@ -171,18 +167,18 @@ console.log(listParams);
  */
 async function metadata(fileObject) {
   try {
-    const fileSchemaValidation = await schema.schemaValidation(fileObject, schema.metadataSchemaValidation);
-    if (fileSchemaValidation.details) {
-      logger.error({message: 'Unable to get the details required for metadata', messageInfo: fileSchemaValidation.details[0]});
+    const fileSchemaValidation = await schema.schemaValidation(fileObject);
+    if (!fileSchemaValidation.success) {
+      logger.error({message: 'Unable to get the details required for metadata', messageInfo: fileSchemaValidation.details});
       const errMsg = {
         success: false,
-        message: `Unable to get the details required for metadata ${fileSchemaValidation.details[0].message}`,
+        message: `Unable to get the details required for metadata ${fileSchemaValidation.details.message}`,
         keyMissing: fileSchemaValidation.details[0].context,
         record: fileSchemaValidation._object,
       };
       return errMsg;
     } else {
-      const metadataUpdateStatus = await upload.collection.insertOne({'name': fileSchemaValidation[0].name, 'url': fileSchemaValidation[0].url, 'type': fileSchemaValidation[0].type, 'bucket': fileSchemaValidation[0].bucket, 'lastModified': fileSchemaValidation[0].lastModified, 'sizeInBytes': fileSchemaValidation[0].sizeInBytes, 'purpose': fileSchemaValidation[0].purpose, 'keyName': fileSchemaValidation[0].keyName, 'user': fileSchemaValidation[0].user, 'status': fileSchemaValidation[0].status});
+      const metadataUpdateStatus = await upload.collection.insertOne({'name': fileSchemaValidation.value.name, 'url': fileSchemaValidation.value.url, 'type': fileSchemaValidation.value.type, 'bucket': fileSchemaValidation.value.bucket, 'lastModified': fileSchemaValidation.value.lastModified, 'sizeInBytes': fileSchemaValidation.value.sizeInBytes, 'purpose': fileSchemaValidation.value.purpose, 'keyName': fileSchemaValidation.value.keyName, 'user': fileSchemaValidation.value.user, 'status': fileSchemaValidation.value.status});
       const metaFinalDetails = {
         'Count': metadataUpdateStatus.insertedCount,
         'ID': metadataUpdateStatus.insertedId,
