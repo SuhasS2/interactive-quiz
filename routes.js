@@ -7,7 +7,7 @@ exports.init = (router) => {
     res.status(200).json({ success: true, message: 'Welcome' });
   });
 
-  router.route('/get-quiz-data').get(readQuizDetails.readQuizData);
+  router.route('/get-quiz-data/:pathExtension').get(readQuizDetails.readQuizData);
   //router.route('/add-quiz-data').post(createQuizDetails.createQuizData);
   router.route('/add-quiz-data').post(createQuizDetails.quizDataCreation);
 };

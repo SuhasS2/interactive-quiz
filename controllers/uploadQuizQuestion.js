@@ -5,6 +5,7 @@ const csvtojson = require('csvtojson');
 const s3Util = require('../util/s3Modules');
 const quizData = require('../model/interactiveQuizData');
 const dataValidation = require('../util/payloadValidationOfQuizData');
+const url = require('url');
 
 
 async function quizDataCreation(req, res) {
@@ -34,9 +35,26 @@ async function quizDataCreation(req, res) {
                     const jsonObj = await csvtojson().fromFile(formfields.files.file.path);
                     jsonObj.forEach(async function (dataValues) {
                         try {
-                            const payloadValidation = await dataValidation.payloadValidationOfQuizData(dataValues);
+                            const newUrl = new URL(`${dataValues.url}`);
+                            const newUrlPath = newUrl.pathname;
+                            const quizDetails = dataValues;
+                            quizDetails.name = dataValues.name;
+                            quizDetails.questionNumber = dataValues.questionNumber;
+                            quizDetails.question['questionPartOne'] = dataValues.question.questionPartOne;
+                            quizDetails.question['questionType'] = dataValues.question.questionType;
+                            quizDetails.options = dataValues.options;
+                            quizDetails.optionListIn = dataValues.optionListIn;
+                            quizDetails.keyAnswer = dataValues.keyAnswer;
+                            quizDetails.answer = dataValues.answer;
+                            quizDetails.correctAnswerResponseWord = dataValues.correctAnswerResponseWord;
+                            quizDetails.correctAnswerResponse = dataValues.correctAnswerResponse;
+                            quizDetails.wrongAnswerResponse = dataValues.wrongAnswerResponse;
+                            quizDetails.wrongAnswerResponseWord = dataValues.wrongAnswerResponseWord;
+                            quizDetails.url = newUrlPath;
+                            const payloadValidation = await dataValidation.payloadValidationOfQuizData(quizDetails);
+
                             if (payloadValidation.success) {
-                                await quizData.collection.insertOne(payloadValidation.value);
+                                await quizData.collection.insertOne(quizDetails);
                             } else {
                                 res.status(404).send({ message: `${payloadValidation.message}` });
                             }
@@ -44,13 +62,12 @@ async function quizDataCreation(req, res) {
                             logger.error({ topic: 'Something went wrong', message: `${err}` });
                             res.status(500).send({ message: `${err}` });
                         }
-                    });
+                    });res.status(200).send({ message: 'Quiz Data and S3 File Data Uploaded Successfully' });
                 } catch (err) {
                     logger.error({ message: 'S3 upload failed' });
                     res.status(500).send({ message: 'S3 Upload failed' });
                 }
             }
-            res.status(200).send({ message: 'Quiz Data and S3 File Data Uploaded Successfully' });
         }
     }
 }

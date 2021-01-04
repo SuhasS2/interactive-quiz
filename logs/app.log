@@ -73,3 +73,52 @@
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"ReferenceError: i is not defined","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"Error: key quizdata.name must not contain '.'","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"ReferenceError: url is not defined","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"Error: key quizdata.name must not contain '.'","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"success":false,"error":{}},"level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Something went wrong","message":"TypeError: Assignment to constant variable.","level":"error"}
+{"topic":"Something went wrong","message":"ReferenceError: quizMCQQuestionAndAnswer is not defined","level":"error"}
+{"topic":"Something went wrong","message":"TypeError: quizQuestionAnswer.push is not a function","level":"error"}
+{"topic":"Something went wrong","message":"MongooseError: Operation `interactivequizzes.countDocuments()` buffering timed out after 10000ms","level":"error"}
+{"topic":"Something went wrong","message":"ReferenceError: quizQuestionAndAnswer is not defined","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}

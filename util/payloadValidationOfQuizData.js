@@ -9,6 +9,7 @@ const questionDetails = Joi.object({
 
 const quizDetails = Joi.object({
     'name': Joi.string().min(2).max(100).trim().required(),
+    'url':Joi.string().min(2).max(100).trim(),
     'questionNumber': Joi.number().integer().min(1).max(50).required(),
     'question': questionDetails,
     'options': Joi.array().items(Joi.string()).required(),
