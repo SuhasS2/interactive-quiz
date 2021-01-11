@@ -33,11 +33,16 @@ async function checkFileType(file) {
  * @return {Object} Returns the details of the files uploaded.
  */
 async function fileParsing(fileBody) {
+  //console.log(Object.keys(fileBody));
   const parsedFields = await new Promise(function(resolve, reject) {
     form.parse(fileBody, function(err, fields, files) {
+      //console.log(fileBody);
+      //console.log(fields); 
+      //console.log("second",typeof files);
+      //console.log("->",Object.keys(files).length);
       if (err) {
         reject(err);
-        return;
+        return reject(err);
       } else {
         const fileDetails = {};
         fileDetails['files'] = files;

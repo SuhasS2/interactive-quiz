@@ -22,43 +22,6 @@ const quizDetails = Joi.object({
     'wrongAnswerResponse': Joi.string().min(2).max(5000).trim().required(),
 });
 
-const metadataSchemaValidation = Joi.object().keys({
-    name: Joi.string().min(2).trim().required(),
-    type: Joi.string().min(2).trim().required(),
-    url: Joi.string().min(2).trim().required(),
-    lastModified: Joi.date().iso().required(),
-    sizeInBytes: Joi.number().required(),
-    bucket: Joi.string().required(),
-    purpose: Joi.string().required(),
-    keyName: Joi.string().required(),
-    user: Joi.string(),
-    status: Joi.string(),
-    recordCount: Joi.number(),
-    action: Joi.string(),
-  });
-
-  function payloadValidationOfS3Data(data) {
-    const validationResult = {};
-    if (!data) {
-        validationResult['success'] = false;
-        validationResult['message'] = 'S3 Data cannot be empty';
-        return validationResult;
-    } else {
-        const validationStats = metadataSchemaValidation.validate(data);
-        if (validationStats.error) {
-            validationResult['success'] = false;
-            validationResult['message'] = validationStats.error.details[0].message;
-            console.log(validationResult);
-            return validationResult;
-        } else {
-            validationResult['success'] = true;
-            validationResult['message'] = 'S3 data validation is successfully done';
-            validationResult['value'] = validationStats.value;
-            return validationResult;
-        }
-    }
-}
-
 function payloadValidationOfQuizData(data) {
     const validationResult = {};
     if (!data) {
@@ -70,7 +33,6 @@ function payloadValidationOfQuizData(data) {
         if (validationStats.error) {
             validationResult['success'] = false;
             validationResult['message'] = validationStats.error.details[0].message;
-            console.log(validationResult);
             return validationResult;
         } else {
             validationResult['success'] = true;
@@ -81,4 +43,4 @@ function payloadValidationOfQuizData(data) {
     }
 }
 
-module.exports = { payloadValidationOfQuizData, payloadValidationOfS3Data };
+module.exports = { payloadValidationOfQuizData };

@@ -1,104 +1,9 @@
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"ReferenceError: testData is not defined","level":"error"}
-{"topic":"Adding Data","message":"MongoError: docs parameter must be an array of documents","level":"error"}
-{"topic":"Adding Quiz Data","message":"MongoError: docs parameter must be an array of documents","level":"error"}
-{"message":{"Function":"checkFileType"},"level":"info"}
-{"topic":"Storing quiz details","message":"ReferenceError: s3Util is not defined","level":"error"}
-{"topic":"Storing quiz details","message":"ReferenceError: form is not defined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'type' of undefined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'type' of undefined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'name' of undefined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'name' of undefined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'name' of undefined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'name' of undefined","level":"error"}
-{"topic":"Storing quiz details","message":"TypeError: Cannot read property 'name' of undefined","level":"error"}
-{"topic":"Storing test details","message":"MongoError: docs parameter must be an array of documents","level":"error"}
-{"topic":"Storing test details","message":"MongoError: docs parameter must be an array of documents","level":"error"}
-{"topic":"Storing test details","message":"MongoError: docs parameter must be an array of documents","level":"error"}
-{"topic":"Storing test details","message":"MongooseError: Operation `interactivequizzes.insertMany()` buffering timed out after 10000ms","level":"error"}
-{"topic":"Storing test details","message":"MongooseError: Operation `interactivequizzes.insertMany()` buffering timed out after 10000ms","level":"error"}
-{"topic":"Storing test details","message":"TypeError: Cannot read property 'status' of undefined","level":"error"}
-{"topic":"Storing test details","message":"TypeError: Cannot read property 'status' of undefined","level":"error"}
-{"topic":"Storing test details","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"topic":"Something went wrong","message":"TypeError: statusArr.push is not a function","level":"error"}
-{"topic":"Something went wrong","message":"ReferenceError: statusArr is not defined","level":"error"}
-{"topic":"Something went wrong","message":"TypeError: Cannot read property 'questionNumber' of undefined","level":"error"}
-{"topic":"Something went wrong","message":"TypeError: Cannot read property 'questionNumber' of undefined","level":"error"}
-{"topic":"Something went wrong","message":"TypeError: Cannot read property 'questionNumber' of undefined","level":"error"}
-{"topic":"Something went wrong","message":"TypeError: Cannot read property 'push' of undefined","level":"error"}
-{"topic":"Something went wrong","message":"ReferenceError: csvFilePath is not defined","level":"error"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"ReferenceError: i is not defined","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"Error: key quizdata.name must not contain '.'","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"ReferenceError: url is not defined","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"Error: key quizdata.name must not contain '.'","level":"error"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"message":{"success":false,"error":{}},"level":"error"}
+{"topic":"Something went wrong","message":"TypeError: Cannot convert undefined or null to object","level":"error"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
@@ -114,11 +19,39 @@
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
-{"topic":"Something went wrong","message":"TypeError: Assignment to constant variable.","level":"error"}
-{"topic":"Something went wrong","message":"ReferenceError: quizMCQQuestionAndAnswer is not defined","level":"error"}
-{"topic":"Something went wrong","message":"TypeError: quizQuestionAnswer.push is not a function","level":"error"}
-{"topic":"Something went wrong","message":"MongooseError: Operation `interactivequizzes.countDocuments()` buffering timed out after 10000ms","level":"error"}
-{"topic":"Something went wrong","message":"ReferenceError: quizQuestionAndAnswer is not defined","level":"error"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
 {"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
+{"message":{"File Type":null,"Function":"checkFileType"},"level":"info"}
+{"message":"File type not supported","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":"Quiz data upload failed, something went wrong","level":"error"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"message":{"File Type":"text/csv","Function":"checkFileType"},"level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
+{"topic":"Something went wrong","message":"ReferenceError: quizQuestions is not defined","level":"error"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}
+{"topic":"Get Quiz Details","message":"Quiz Data Fetched successfully","level":"info"}

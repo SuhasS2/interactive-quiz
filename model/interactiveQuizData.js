@@ -17,7 +17,8 @@ const interActiveQuiz = new Schema({
     correctAnswerResponseWord: String,
     correctAnswerResponse: String,
     wrongAnswerResponseWord: String,
-    wrongAnswerResponse: String
+    wrongAnswerResponse: String,
+    activeStats :Boolean
 });
 
 module.exports = mongoose.model('interactivequizzes', interActiveQuiz);
